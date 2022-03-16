@@ -1,0 +1,11 @@
+[package]
+name = "dobby-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["black-binary <blackbinary@qq.com>"]
+license = "Apache-2.0"
+repository = "https://github.com/black-binary/dobby-rs/"
+
+[dependencies]
+thiserror = "1.0"
+dobby-sys = { git = "https://github.com/black-binary/dobby-sys.git" }
