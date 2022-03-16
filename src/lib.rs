@@ -4,6 +4,7 @@
 //!
 //! ```
 //! use dobby_rs::{resolve_symbol, hook, Address};
+//! use std::mem::transmute;
 //!
 //! #[inline(never)]
 //! #[no_mangle]
@@ -17,10 +18,15 @@
 //!     a - b
 //! }
 //!
-//! let addr = add as usize as Address;
-//! let replace = sub as usize as Address;
 //! unsafe {
-//!     hook(addr, replace).unwrap();
+//!     let addr = add as usize as Address;
+//!     let replace = sub as usize as Address;
+//!
+//!     let origin = hook(addr, replace).unwrap();
+//!     let origin: extern "C" fn(u64, u64) -> u64 = transmute(origin);
+//!
+//!     assert_eq!(origin(2, 1), 2 + 1);
+//!     assert_eq!(add(2, 1), 2 - 1);
 //! }
 //! ```
 

@@ -24,6 +24,10 @@ fn test_hook() {
         println!("addr={:x} replace={:x}", addr as usize, replace as usize);
         let origin = hook(addr, replace).unwrap();
         println!("origin={:x}", origin as usize);
+
+        let f: extern "C" fn(u64, u64) -> u64 = std::mem::transmute(origin);
+        let c = f(2, 1);
+        assert_eq!(c, 2 + 1);
     }
 
     let c = add(7, 5);
