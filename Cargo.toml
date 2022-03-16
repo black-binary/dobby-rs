@@ -5,7 +5,11 @@ edition = "2021"
 authors = ["black-binary <blackbinary@qq.com>"]
 license = "Apache-2.0"
 repository = "https://github.com/black-binary/dobby-rs/"
+description = "A rust binding for Dobby"
+keywords = ["hook","android","dobby","pwn"]
 
 [dependencies]
 thiserror = "1.0"
-dobby-sys = { git = "https://github.com/black-binary/dobby-sys.git" }
+dobby-sys = { version = "0.1" }
+
+# dobby-sys = { git = "https://github.com/black-binary/dobby-sys.git" }
