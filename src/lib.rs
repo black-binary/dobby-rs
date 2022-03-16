@@ -53,7 +53,7 @@ pub enum DobbyHookError {
 
 /// Set up a hook at `addr`, return the trampoline address of the original function.
 /// # Safety
-/// Hooking is NOT SAFE. Use with your own caution.
+/// THIS FUNCTION IS NOT SAFE.
 pub unsafe fn hook(addr: Address, replace: Address) -> Result<Address, DobbyHookError> {
     let mut origin = std::ptr::null_mut();
     hook_and_update_origin(addr, replace, &mut origin)?;
@@ -62,7 +62,7 @@ pub unsafe fn hook(addr: Address, replace: Address) -> Result<Address, DobbyHook
 
 /// Set up a hook at `addr`. The trampoline address will be set simultaneously.
 /// # Safety
-/// Hooking is NOT SAFE. Use with your own caution.
+/// THIS FUNCTION IS NOT SAFE.
 pub unsafe fn hook_and_update_origin(
     addr: Address,
     replace: Address,
@@ -78,6 +78,7 @@ pub unsafe fn hook_and_update_origin(
 
 /// Undo all hooks at `addr`.
 /// # Safety
+/// THIS FUNCTION IS NOT SAFE.
 pub unsafe fn unhook(addr: Address) -> Result<(), DobbyHookError> {
     let ret = ffi::DobbyDestroy(addr);
     if ret == 0 {
@@ -101,7 +102,7 @@ pub enum DobbyMemoryOperationError {
 
 /// Patch the code at `addr` with supplied bytes.
 /// # Safety
-/// Patching code is NOT SAFE. Use with your own caution.
+/// THIS FUNCTION IS NOT SAFE.
 pub unsafe fn patch_code(addr: Address, code: &[u8]) -> Result<(), DobbyMemoryOperationError> {
     let ret = ffi::CodePatch(addr, code.as_ptr() as *mut _, code.len() as u32);
     match ret {

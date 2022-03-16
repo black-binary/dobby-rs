@@ -1,6 +1,10 @@
 # dobby-rs
 
-A rusty binding of Dobby, a lightweight exploit hook framework.
+Dobby is a lightweight, multi-platform, multi-architecture exploit hook framework.
+
+This crate is a rusty binding of [Dobby](https://github.com/jmpews/Dobby).
+
+Caution: Hooking is NOT SAFE! Use at your own risk.
 
 ## Quickstart
 
@@ -33,10 +37,11 @@ unsafe {
     - x86_64
     - armv7
     - aarch64
+
 - MacOS
     - x86_64
     - aarch64
+
 - Linux
     - (WIP) x86
     - x86_64
-
